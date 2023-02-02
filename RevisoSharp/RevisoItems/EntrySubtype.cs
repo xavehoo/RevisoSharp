@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace RevisoSharp
+namespace RevisoSharp.RevisoItems
 {
     public class EntrySubtypeCollection
     {

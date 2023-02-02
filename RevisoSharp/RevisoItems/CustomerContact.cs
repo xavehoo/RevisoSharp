@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace RevisoSharp
+namespace RevisoSharp.RevisoItems
 {
-    public class CustomerContactCollection
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CustomerContactCollection : RevisoBaseCollection 
     {
         /// <summary>
         /// 
@@ -14,37 +18,45 @@ namespace RevisoSharp
         public List<CustomerContact> Collection { get; set; }
     }
 
-    public class CustomerContact
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CustomerContact : RevisoBaseObject
     {
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("customer")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Customer Customer { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("customerContactNumber")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string CustomerContactNumber { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("deleted")]
-        public bool Deleted { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Deleted { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("eInvoice")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string EInvoiceId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("email")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Email { get; set; }
 
         ///// <summary>
@@ -57,19 +69,23 @@ namespace RevisoSharp
         /// 
         /// </summary>
         [JsonPropertyName("name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Name { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("notes")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Notes { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("phone")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Phone { get; set; }
 
     }
+
 }

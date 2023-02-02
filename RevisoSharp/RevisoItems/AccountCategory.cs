@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace RevisoSharp
+namespace RevisoSharp.RevisoItems
 {
-    public class AccountCategoryCollection
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AccountCategoryCollection : RevisoBaseCollection
     {
         /// <summary>
         /// 
@@ -13,37 +17,47 @@ namespace RevisoSharp
         [JsonPropertyName("collection")]
         public List<AccountCategory> Collection { get; set; }
     }
-    public class AccountCategory
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AccountCategory : RevisoBaseObject
     {
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("accountCategoryType")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string AccountCategoryType { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Description { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("parent")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Parent { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("useInvertedAccountCategory")]
-        public bool UseInvertedAccountCategory { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? UseInvertedAccountCategory { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("accountCategoryNumber")]
-        public int AccountCategoryNumber { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? AccountCategoryNumber { get; set; }
     }
+
 }

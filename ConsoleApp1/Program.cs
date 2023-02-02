@@ -1,5 +1,5 @@
 ﻿using RestSharp;
-using RevisoSharp;
+using RevisoSharp.RevisoItems;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

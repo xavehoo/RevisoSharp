@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RevisoSharp
+namespace RevisoSharp.RevisoItems
 {
-    class AppRole
+    class AssetGroup
     {
     }
 }

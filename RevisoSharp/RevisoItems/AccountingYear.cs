@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace RevisoSharp
+namespace RevisoSharp.RevisoItems
 {
-    public class AccountingYearCollection
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AccountingYearCollection : RevisoBaseCollection 
     {
         /// <summary>
         /// 
@@ -13,13 +17,17 @@ namespace RevisoSharp
         public List<AccountingYear> Collection { get; set; }
     }
 
-    public class AccountingYear
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AccountingYear : RevisoBaseObject
     {
         /// <summary>
         /// Determines if the accounting year is closed for further transactions.
         /// </summary>
         [JsonPropertyName("closed")]
-        public bool Closed { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Closed { get; set; }
 
         ///// <summary>
         ///// A link to a collection of all entries booked in the accounting year.
@@ -35,6 +43,7 @@ namespace RevisoSharp
         /// The first accounting year on an agreement can begin on any day of the month.
         /// </summary>
         [JsonPropertyName("fromDate")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string FromDate { get; set; }
 
         ///// <summary>
@@ -46,10 +55,11 @@ namespace RevisoSharp
         // ! Required
         // ! Format: full-date (yyyy-MM-dd)
         /// <summary>
-        [JsonPropertyName("toDate")]
         /// The last date in the accounting year in the format YYYY-MM-DD. 
         /// It must be the last date in the last month of the accounting year. An accounting year can at most have a duration of 18 months.
         /// </summary>
+        [JsonPropertyName("toDate")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string ToDate { get; set; }
 
         ///// <summary>
@@ -68,7 +78,9 @@ namespace RevisoSharp
         /// The calendar year or years spanned by the accounting year in the format YYYY or YYYY/YYYY.
         /// </summary>
         [JsonPropertyName("year")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Year { get; set; }
 
     }
+
 }

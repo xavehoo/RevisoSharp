@@ -3,20 +3,34 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace RevisoSharp
+namespace RevisoSharp.RevisoItems
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public enum EnumAccountType
     {
         status
     }
 
-    public enum EnumDebitCredit {
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum EnumDebitCredit
+    {
         debit,
         credit
     }
 
-    public class AccountCollection
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class AccountCollection : RevisoBaseCollection
     {
         /// <summary>
         /// 
@@ -24,7 +38,11 @@ namespace RevisoSharp
         [JsonPropertyName("collection")]
         public List<Account> Collection { get; set; }
     }
-    public class Account
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Account : RevisoBaseObject
     {
         /// <summary>
         /// The category of the account.
@@ -131,4 +149,5 @@ namespace RevisoSharp
         public string Name { get; set; }
 
     }
+
 }
