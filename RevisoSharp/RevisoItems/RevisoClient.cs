@@ -49,6 +49,55 @@ namespace RevisoSharp.RevisoItems
         }
 
 
+        #region ACCOUNT APIs
+
+        public AccountCollection GetAccount(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<AccountCollection>($"accounts", args);
+            return response;
+        }
+        public async Task<AccountCollection> GetAccountAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<AccountCollection>($"accounts", args);
+            return response;
+        }
+        public Account GetAccount(string accountNumber)
+        {
+            var response = _client.GetJson<Account>($"accounts/{accountNumber}");
+            return response;
+        }
+        public async Task<Account> GetAccountAsync(string accountNumber)
+        {
+            var response = await _client.GetJsonAsync<Account>($"accounts/{accountNumber}");
+            return response;
+        }
+
+        #endregion
+
+        #region ACCOUNT CATEGORY APIs
+
+        public AccountCategoryCollection GetAccountCategory(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<AccountCategoryCollection>($"account-categories", args);
+            return response;
+        }
+        public async Task<AccountCategoryCollection> GetAccountCategoryAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<AccountCategoryCollection>($"account-categories", args);
+            return response;
+        }
+        public async Task<AccountCategory> GetAccountCategoryAsync(string accountCategoryNumber)
+        {
+            var response = await _client.GetJsonAsync<AccountCategory>($"account-categories/{accountCategoryNumber}");
+            return response;
+        }
+
+        #endregion
+
         #region CUSTOMER APIs
 
         public CustomerCollection GetCustomer(int pageSize, int skipPages)
@@ -74,8 +123,122 @@ namespace RevisoSharp.RevisoItems
             var response = await _client.PostJsonAsync<Customer, Customer>($"customers", null);
             return response;
         }
-        
+
         #endregion
+
+        #region SUPPLIER APIs
+
+        public SupplierCollection GetSupplier(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<SupplierCollection>($"suppliers", args);
+            return response;
+        }
+        public async Task<SupplierCollection> GetSupplierAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<SupplierCollection>($"suppliers", args);
+            return response;
+        }
+        public async Task<Supplier> GetSupplierAsync(string supplierNumber)
+        {
+            var response = await _client.GetJsonAsync<Supplier>($"suppliers/{supplierNumber}");
+            return response;
+        }
+        public async Task<Supplier> PostSupplierAsync(Supplier supplier)
+        {
+            //var request = supplier.
+            var response = await _client.PostJsonAsync<Supplier, Supplier>($"suppliers", null);
+            return response;
+        }
+
+        #endregion
+
+        #region SUPPLIER GROUP APIs
+
+        public SupplierGroupCollection GetSupplierGroup(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<SupplierGroupCollection>($"supplier-groups", args);
+            return response;
+        }
+        public async Task<SupplierGroupCollection> GetSupplierGroupAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<SupplierGroupCollection>($"supplier-groups", args);
+            return response;
+        }
+        public async Task<SupplierGroup> GetSupplierGroupAsync(string supplierGroupNumber)
+        {
+            var response = await _client.GetJsonAsync<SupplierGroup>($"supplier-groups/{supplierGroupNumber}");
+            return response;
+        }
+        public async Task<SupplierGroup> PostSupplierGroupAsync(SupplierGroup supplierGroup)
+        {
+            //var request = supplier.
+            var response = await _client.PostJsonAsync<SupplierGroup, SupplierGroup>($"supplier-groups", null);
+            return response;
+        }
+
+        #endregion
+
+        #region INVOICE APIs
+
+        public InvoiceCollection GetBookedInvoice(int pageSize, int skipPages)
+        {
+            var args = new { pageSize = pageSize, skipPages = skipPages, filter = "date$gte:2015-01-01$and:date$lte:2030-12-31" };
+            //var response = _client.GetJson<InvoiceCollection>($"v2/invoices/booked", args);
+            var response = _client.GetJson<InvoiceCollection>($"v2/invoices/booked", args);
+            return response;
+        }
+        public async Task<InvoiceCollection> GetBookedInvoiceAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<InvoiceCollection>($"v2/invoices/booked", args);
+            return response;
+        }
+        public InvoiceCollection GetBookedInvoiceFiltered(int pageSize, int skipPages, string filter)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<InvoiceCollection>($"v2/invoices/booked?filter={filter}", args);
+            return response;
+        }
+        public Invoice GetBookedInvoice(string invoiceId)
+        {
+            var response = _client.GetJson<Invoice>($"v2/invoices/booked/{invoiceId}");
+            return response;
+        }
+        public async Task<Invoice> GetBookedInvoiceAsync(string invoiceId)
+        {
+            var response = await _client.GetJsonAsync<Invoice>($"v2/invoices/booked/{invoiceId}");
+            return response;
+        }
+
+        public InvoiceCollection GetDraftInvoice(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<InvoiceCollection>($"v2/invoices/drafts", args);
+            return response;
+        }
+        public async Task<InvoiceCollection> GetDraftInvoiceAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<InvoiceCollection>($"v2/invoices/drafts", args);
+            return response;
+        }
+        public Invoice GetDraftInvoice(string invoiceId)
+        {
+            var response = _client.GetJson<Invoice>($"v2/invoices/drafts/{invoiceId}");
+            return response;
+        }
+        public async Task<Invoice> GetDraftInvoiceAsync(string invoiceId)
+        {
+            var response = await _client.GetJsonAsync<Invoice>($"v2/invoices/drafts/{invoiceId}");
+            return response;
+        }
+
+        #endregion
+
 
         #region ORDER APIs
 
@@ -91,9 +254,9 @@ namespace RevisoSharp.RevisoItems
             var response = await _client.GetJsonAsync<OrderCollection>($"orders", args);
             return response;
         }
-        public async Task<Order> GetOrderAsync(string customerNumber)
+        public async Task<Order> GetOrderAsync(string orderNumber)
         {
-            var response = await _client.GetJsonAsync<Order>($"orders/{customerNumber}");
+            var response = await _client.GetJsonAsync<Order>($"orders/{orderNumber}");
             return response;
         }
         public Order CreateOrder(Order order)
@@ -155,6 +318,28 @@ namespace RevisoSharp.RevisoItems
 
         #endregion
 
+        #region PRODUCT APIs
+
+        public ProductCollection GetProduct(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<ProductCollection>($"products", args);
+            return response;
+        }
+        public async Task<ProductCollection> GetProductAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<ProductCollection>($"products", args);
+            return response;
+        }
+        public async Task<Product> GetProductAsync(string productNumber)
+        {
+            var response = await _client.GetJsonAsync<Product>($"product/{productNumber}");
+            return response;
+        }
+
+        #endregion
+
         #region PROVINCE APIs
 
         public ProvinceCollection GetProvince(int pageSize, int skipPages)
@@ -173,6 +358,52 @@ namespace RevisoSharp.RevisoItems
         {
             var response = await _client.GetJsonAsync<Province>($"provinces/{provinceNumber}");
             return response;
+        }
+
+        #endregion
+
+        #region TENDER CONTRACT APIs
+
+        //public TenderContractCollection GetTenderContract(int pageSize, int skipPages)
+        //{
+        //    var args = new { pageSize, skipPages };
+        //    var response = _client.GetJson<TenderContractCollection>($"units", args);
+        //    return response;
+        //}
+        //public async Task<UnitCollection> GetUnitAsync(int pageSize, int skipPages)
+        //{
+        //    var args = new { pageSize, skipPages };
+        //    var response = await _client.GetJsonAsync<UnitCollection>($"units", args);
+        //    return response;
+        //}
+        //public async Task<Unit> GetUnitAsync(string unitNumber)
+        //{
+        //    var response = await _client.GetJsonAsync<Unit>($"units/{unitNumber}");
+        //    return response;
+        //    //return response != null ? response.Data : null;
+        //}
+
+        #endregion
+
+        #region UNIT APIs
+
+        public UnitCollection GetUnit(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<UnitCollection>($"units", args);
+            return response;
+        }
+        public async Task<UnitCollection> GetUnitAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<UnitCollection>($"units", args);
+            return response;
+        }
+        public async Task<Unit> GetUnitAsync(string unitNumber)
+        {
+            var response = await _client.GetJsonAsync<Unit>($"units/{unitNumber}");
+            return response;
+            //return response != null ? response.Data : null;
         }
 
         #endregion
@@ -223,29 +454,6 @@ namespace RevisoSharp.RevisoItems
 
         #endregion
 
-        #region UNIT APIs
-
-        public UnitCollection GetUnit(int pageSize, int skipPages)
-        {
-            var args = new { pageSize, skipPages };
-            var response = _client.GetJson<UnitCollection>($"units", args);
-            return response;
-        }
-        public async Task<UnitCollection> GetUnitAsync(int pageSize, int skipPages)
-        {
-            var args = new { pageSize, skipPages };
-            var response = await _client.GetJsonAsync<UnitCollection>($"units", args);
-            return response;
-        }
-        public async Task<Unit> GetUnitAsync(string unitNumber)
-        {
-            var response = await _client.GetJsonAsync<Unit>($"units/{unitNumber}");
-            return response;
-            //return response != null ? response.Data : null;
-        }
-
-        #endregion
-
         #region VAT ZONE APIs
 
         public VatZoneCollection GetVatZone(int pageSize, int skipPages)
@@ -268,6 +476,43 @@ namespace RevisoSharp.RevisoItems
         }
 
         #endregion
+
+
+        #region VOUCHER APIs
+
+        public VoucherCollection GetVoucher(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<VoucherCollection>($"vouchers", args);
+            return response;
+        }
+        public async Task<VoucherCollection> GetVoucherAsync(int pageSize, int skipPages)
+        {
+            var args = new { pageSize, skipPages };
+            var response = await _client.GetJsonAsync<VoucherCollection>($"vouchers", args);
+            return response;
+        }
+        public VoucherCollection GetVoucherFiltered(int pageSize, int skipPages, string filter)
+        {
+            var args = new { pageSize, skipPages };
+            var response = _client.GetJson<VoucherCollection>($"vouchers?filter={filter}", args);
+            return response;
+        }
+        public async Task<Voucher> GetVoucher(string voucherId)
+        {
+            var response = await _client.GetJsonAsync<Voucher>($"vouchers/{voucherId}");
+            return response;
+            //return response != null ? response.Data : null;
+        }
+        public async Task<Voucher> GetVoucherAsync(string voucherId)
+        {
+            var response = await _client.GetJsonAsync<Voucher>($"vouchers/{voucherId}");
+            return response;
+            //return response != null ? response.Data : null;
+        }
+
+        #endregion
+
 
         //public class RevisoSingleObject<T>
         //{

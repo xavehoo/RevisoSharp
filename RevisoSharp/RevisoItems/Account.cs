@@ -11,7 +11,13 @@ namespace RevisoSharp.RevisoItems
     /// </summary>
     public enum EnumAccountType
     {
-        status
+        heading,
+        headingStart,
+        profitAndLoss,
+        totalFrom,
+        status,
+        sumInterval,
+        sumAlpha
     }
 
 
@@ -54,31 +60,31 @@ namespace RevisoSharp.RevisoItems
         /// A link to a list of accounting years for which the account is usable.
         /// </summary>
         [JsonPropertyName("accountingYears")]
-        public List<AccountingYear> AccountingYears { get; set; }
+        public Uri AccountingYears { get; set; }
 
         /// <summary>
         /// The type of account in the chart of accounts.
         /// </summary>
         [JsonPropertyName("accountType")]
-        public EnumAccountType AccountType { get; set; }
+        public string AccountType { get; set; }
 
         /// <summary>
-        /// Used to bar the account from being used - default is false.
+        /// The current balance of the account.
         /// </summary>
         [JsonPropertyName("balance")]
-        public int Balance { get; set; }
+        public decimal? Balance { get; set; }
 
         /// <summary>
-        /// Determines if the account can be manually updated with entries.
+        /// Shows if the account is barred from being used.
         /// </summary>
         [JsonPropertyName("barred")]
-        public bool Barred { get; set; }
+        public bool? Barred { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("blockDirectEntries")]
-        public bool BlockDirectEntries { get; set; }
+        public bool? BlockDirectEntries { get; set; }
 
         ///// <summary>
         ///// 
@@ -91,7 +97,7 @@ namespace RevisoSharp.RevisoItems
         /// </summary>
         [JsonPropertyName("debitCredit")]
         // TODO ---
-        public EnumDebitCredit DebitCredit { get; set; }
+        public string DebitCredit { get; set; }
 
         ///// <summary>
         ///// 
@@ -122,7 +128,7 @@ namespace RevisoSharp.RevisoItems
         /// 
         /// </summary>
         [JsonPropertyName("requireDepartmentalDistributionOnEntries")]
-        public bool RequireDepartmentalDistributionOnEntries { get; set; }
+        public bool? RequireDepartmentalDistributionOnEntries { get; set; }
 
         ///// <summary>
         ///// 
@@ -140,7 +146,7 @@ namespace RevisoSharp.RevisoItems
         /// 
         /// </summary>
         [JsonPropertyName("accountNumber")]
-        public int AccountNumber { get; set; }
+        public int? AccountNumber { get; set; }
 
         /// <summary>
         /// 

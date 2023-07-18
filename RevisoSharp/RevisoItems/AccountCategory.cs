@@ -43,7 +43,7 @@ namespace RevisoSharp.RevisoItems
         /// </summary>
         [JsonPropertyName("parent")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string Parent { get; set; }
+        public AccountCategory Parent { get; set; }
 
         /// <summary>
         /// 

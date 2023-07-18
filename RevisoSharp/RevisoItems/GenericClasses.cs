@@ -548,6 +548,9 @@ namespace RevisoSharp.RevisoItems
             this.VatZone = new VatZone();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonPropertyName("address")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Address { get; set; }
@@ -598,6 +601,66 @@ namespace RevisoSharp.RevisoItems
 
 
 
+    public class TenderContractCollection : RevisoBaseCollection
+    {
+        public TenderContractCollection() { }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("collection")]
+        public List<TenderContract> Collection { get; set; }
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class TenderContract
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("tenderContractNumber")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? TenderContractNumber { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("customerNumber")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? CustomerNumber { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("documentNumber")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string DocumentNumber { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("cig")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Cig { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Description { get; set; }
+    }
+
+
     public class UnitCollection : RevisoBaseCollection
     {
         public UnitCollection() { }
@@ -608,8 +671,6 @@ namespace RevisoSharp.RevisoItems
         public List<Unit> Collection { get; set; }
 
     }
-
-
 
     /// <summary>
     /// 

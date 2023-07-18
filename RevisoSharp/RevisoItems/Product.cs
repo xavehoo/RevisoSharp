@@ -27,6 +27,13 @@ namespace RevisoSharp.RevisoItems
         /// <summary>
         /// 
         /// </summary>
+        [JsonPropertyName("barCode")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string BarCode { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonPropertyName("barred")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Barred { get; set; }
@@ -36,7 +43,14 @@ namespace RevisoSharp.RevisoItems
         /// </summary>
         [JsonPropertyName("costPrice")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public double? CostPrice { get; set; }
+        public decimal? CostPrice { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Description { get; set; }
 
         ///// <summary>
         ///// 
@@ -69,21 +83,21 @@ namespace RevisoSharp.RevisoItems
         /// </summary>
         [JsonPropertyName("recommendedPrice")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public double? RecommendedPrice { get; set; }
+        public decimal? RecommendedPrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("recommendedCostPrice")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public double? RecommendedCostPrice { get; set; }
+        public decimal? RecommendedCostPrice { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("salesPrice")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public double? SalesPrice { get; set; }
+        public decimal? SalesPrice { get; set; }
 
         /// <summary>
         /// 
@@ -114,4 +128,44 @@ namespace RevisoSharp.RevisoItems
 
     }
 
+
+    public class ProductDetail
+    {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("product")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Product Product { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("unit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Unit Unit { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("productName")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string ProductName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("quantity")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public decimal? Quantity { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("unitPrice")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public decimal? UnitPrice { get; set; }
+
+    }
 }
