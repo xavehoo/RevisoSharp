@@ -158,7 +158,7 @@ namespace RevisoSharp.RevisoItems
         /// </summary>
         [JsonPropertyName("quantity")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public decimal? Quantity { get; set; }
+        public double? Quantity { get; set; }
 
         /// <summary>
         /// 
