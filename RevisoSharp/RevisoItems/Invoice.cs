@@ -29,18 +29,21 @@ namespace RevisoSharp.RevisoItems
         /// 
         /// </summary>
         [JsonPropertyName("vatDate")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTimeOffset VatDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("bookedInvoiceNumber")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public int? BookedInvoiceNumber { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("displayInvoiceNumber")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string DisplayInvoiceNumber { get; set; }
 
         ///// <summary>
@@ -71,6 +74,7 @@ namespace RevisoSharp.RevisoItems
         /// 
         /// </summary>
         [JsonPropertyName("voucher")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Voucher Voucher { get; set; }
 
     }

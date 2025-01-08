@@ -236,6 +236,18 @@ namespace RevisoSharp.RevisoItems
             var response = await _client.GetJsonAsync<Invoice>($"v2/invoices/drafts/{invoiceId}");
             return response;
         }
+        public Invoice CreateDraftInvoice(Invoice invoice)
+        {
+            var request = JsonSerializer.Serialize(invoice, _jsonOptions);
+            var response = _client.PostJson<string, Invoice>($"v2/invoices/drafts", request);
+            return response;
+        }
+        public async Task<Invoice> CreateDraftInvoiceAsync(Invoice invoice)
+        {
+            var request = JsonSerializer.Serialize(invoice, _jsonOptions);
+            var response = await _client.PostJsonAsync<string, Invoice>($"v2/invoices/drafts", request);
+            return response;
+        }
 
         #endregion
 
